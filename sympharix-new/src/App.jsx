@@ -8,6 +8,8 @@ import AboutPage from './pages/About';
 import IndustryPage from './pages/Industry';
 import PrivacyPage from './pages/Privacy';
 import TermsPage from './pages/Terms';
+import ContactPage from './pages/Contact';
+import CareersPage from './pages/Career';
 import './index.css';
 
 function App() {
@@ -23,7 +25,8 @@ function App() {
             <Route path="/industry" element={<IndustryPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/terms" element={<TermsPage />} />
-            <Route path="/contact" element={<div className="py-20 text-center">Contact Page - Coming Soon</div>} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/careers" element={<CareersPage />} />
           </Routes>
         </main>
         <Footer />
