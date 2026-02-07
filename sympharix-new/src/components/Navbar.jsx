@@ -20,7 +20,10 @@ const Navbar = () => {
     { label: 'Explore us', path: '/' },
     { label: 'Our Products', path: '/products' },
     { label: 'Who we are', path: '/about' },
-    { label: 'Contact', path: '/contact' },
+    { label: 'Our Industry', path: '/industry' },
+    { label: 'Careers', path: '/careers' },
+    { label: 'Connect with us', path: '/contact' },
+    
   ];
 
   const handleRegionSelect = (region) => {
