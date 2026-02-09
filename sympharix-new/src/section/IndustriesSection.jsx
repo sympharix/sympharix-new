@@ -1,226 +1,211 @@
 import React, { useState } from 'react';
-import { Briefcase, TrendingUp, Cpu, Users, Globe2, Building2, LineChart, Lightbulb, Shield, Rocket, Network, Coins } from 'lucide-react';
+import { Heart, DollarSign, Factory, Zap, ShoppingBag, GraduationCap, Plane, Smartphone } from 'lucide-react';
 
-const ServicesSection = () => {
-  const [activeService, setActiveService] = useState(null);
+const IndustriesSection = () => {
+  const [hoveredIndustry, setHoveredIndustry] = useState(null);
 
-  const services = [
+  const industries = [
     {
-      icon: <Briefcase className="w-10 h-10" />,
-      title: 'Management Consulting',
-      tagline: 'Strategy Meets Execution',
-      description: 'End-to-end strategic advisory from market entry to operational excellence. We partner with C-suite executives to drive transformational change.',
-      features: ['Strategy Development', 'Performance Improvement', 'Organizational Design', 'Change Management'],
-      color: 'from-blue-600 to-cyan-600',
-      bgAccent: 'bg-blue-50',
-      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80'
+      icon: <Heart className="w-12 h-12" />,
+      name: 'Healthcare & Life Sciences',
+      description: 'Digital health platforms, clinical analytics, regulatory compliance, and patient experience optimization.',
+      stats: { clients: '200+', value: '$15B+' },
+      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80',
+      color: 'from-red-500 to-pink-500'
     },
     {
-      icon: <Cpu className="w-10 h-10" />,
-      title: 'Technology Solutions',
-      tagline: 'Innovation at Scale',
-      description: 'Custom software development, AI/ML integration, and enterprise technology platforms. Building the digital infrastructure of tomorrow.',
-      features: ['Custom Development', 'AI & Automation', 'Cloud Architecture', 'Legacy Modernization'],
-      color: 'from-purple-600 to-indigo-600',
-      bgAccent: 'bg-purple-50',
-      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80'
+      icon: <DollarSign className="w-12 h-12" />,
+      name: 'Financial Services',
+      description: 'Fintech innovation, risk management, regulatory technology, and wealth management platforms.',
+      stats: { clients: '150+', value: '$20B+' },
+      image: 'https://images.unsplash.com/photo-1559526324-593bc073d938?w=800&q=80',
+      color: 'from-green-500 to-emerald-500'
     },
     {
-      icon: <TrendingUp className="w-10 h-10" />,
-      title: 'Financial Advisory',
-      tagline: 'Capital. Strategy. Growth.',
-      description: 'M&A advisory, investment strategy, risk management, and financial restructuring. Navigating complexity with precision.',
-      features: ['M&A Advisory', 'Due Diligence', 'Valuation Services', 'Risk Analytics'],
-      color: 'from-emerald-600 to-teal-600',
-      bgAccent: 'bg-emerald-50',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80'
+      icon: <Factory className="w-12 h-12" />,
+      name: 'Manufacturing & Industrial',
+      description: 'Smart factories, supply chain 4.0, IoT integration, and predictive maintenance systems.',
+      stats: { clients: '180+', value: '$12B+' },
+      image: 'https://images.unsplash.com/photo-1565043666747-69f6646db940?w=800&q=80',
+      color: 'from-orange-500 to-amber-500'
     },
     {
-      icon: <Users className="w-10 h-10" />,
-      title: 'Talent & HR Services',
-      tagline: 'People Are Strategy',
-      description: 'Executive search, organizational development, and HR transformation. Building high-performance cultures that win.',
-      features: ['Executive Search', 'Talent Strategy', 'Leadership Development', 'Culture Transformation'],
-      color: 'from-rose-600 to-pink-600',
-      bgAccent: 'bg-rose-50',
-      image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80'
+      icon: <Zap className="w-12 h-12" />,
+      name: 'Energy & Utilities',
+      description: 'Renewable energy systems, grid modernization, sustainability programs, and energy trading platforms.',
+      stats: { clients: '120+', value: '$18B+' },
+      image: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&q=80',
+      color: 'from-yellow-500 to-orange-500'
     },
     {
-      icon: <Globe2 className="w-10 h-10" />,
-      title: 'Global Operations',
-      tagline: 'Scale Without Borders',
-      description: 'Supply chain optimization, international expansion, and operational excellence across continents. Local expertise, global reach.',
-      features: ['Supply Chain', 'Global Expansion', 'Process Excellence', 'Vendor Management'],
-      color: 'from-orange-600 to-amber-600',
-      bgAccent: 'bg-orange-50',
-      image: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&q=80'
+      icon: <ShoppingBag className="w-12 h-12" />,
+      name: 'Retail & Consumer',
+      description: 'Omnichannel commerce, personalization engines, demand forecasting, and customer data platforms.',
+      stats: { clients: '250+', value: '$10B+' },
+      image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80',
+      color: 'from-purple-500 to-pink-500'
     },
     {
-      icon: <LineChart className="w-10 h-10" />,
-      title: 'Data & Analytics',
-      tagline: 'Intelligence Delivered',
-      description: 'Advanced analytics, predictive modeling, and business intelligence platforms. Turning data into competitive advantage.',
-      features: ['Advanced Analytics', 'BI Platforms', 'Predictive Models', 'Data Strategy'],
-      color: 'from-violet-600 to-purple-600',
-      bgAccent: 'bg-violet-50',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80'
+      icon: <GraduationCap className="w-12 h-12" />,
+      name: 'Education & Research',
+      description: 'Learning platforms, research analytics, institutional management, and EdTech innovation.',
+      stats: { clients: '100+', value: '$5B+' },
+      image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80',
+      color: 'from-blue-500 to-cyan-500'
     },
     {
-      icon: <Shield className="w-10 h-10" />,
-      title: 'Risk & Compliance',
-      tagline: 'Secure by Design',
-      description: 'Cybersecurity, regulatory compliance, and enterprise risk management. Protecting value in an uncertain world.',
-      features: ['Cybersecurity', 'Compliance', 'Risk Assessment', 'Business Continuity'],
-      color: 'from-slate-600 to-gray-600',
-      bgAccent: 'bg-slate-50',
-      image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80'
+      icon: <Plane className="w-12 h-12" />,
+      name: 'Travel & Hospitality',
+      description: 'Booking platforms, guest experience systems, revenue optimization, and loyalty programs.',
+      stats: { clients: '90+', value: '$8B+' },
+      image: 'https://images.unsplash.com/photo-1488085061387-422e29b40080?w=800&q=80',
+      color: 'from-teal-500 to-blue-500'
     },
     {
-      icon: <Lightbulb className="w-10 h-10" />,
-      title: 'Innovation & R&D',
-      tagline: 'Future Forward',
-      description: 'Product development, emerging tech labs, and innovation frameworks. Building what comes next.',
-      features: ['Product Development', 'Innovation Labs', 'IP Strategy', 'Technology Scouting'],
-      color: 'from-yellow-600 to-orange-600',
-      bgAccent: 'bg-yellow-50',
-      image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80'
-    },
-    {
-      icon: <Building2 className="w-10 h-10" />,
-      title: 'Industry Solutions',
-      tagline: 'Sector Specialists',
-      description: 'Deep vertical expertise across healthcare, finance, manufacturing, energy, and retail. Domain knowledge that drives results.',
-      features: ['Healthcare', 'Financial Services', 'Manufacturing', 'Energy & Utilities'],
-      color: 'from-cyan-600 to-blue-600',
-      bgAccent: 'bg-cyan-50',
-      image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80'
-    },
-    {
-      icon: <Rocket className="w-10 h-10" />,
-      title: 'Digital Transformation',
-      tagline: 'Reimagine Everything',
-      description: 'Complete digital overhauls that reshape business models, customer experiences, and operational capabilities.',
-      features: ['Digital Strategy', 'Customer Experience', 'Platform Design', 'Agile Transformation'],
-      color: 'from-fuchsia-600 to-pink-600',
-      bgAccent: 'bg-fuchsia-50',
-      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80'
-    },
-    {
-      icon: <Network className="w-10 h-10" />,
-      title: 'Ecosystem & Alliances',
-      tagline: 'Connected Success',
-      description: 'Strategic partnerships, vendor ecosystems, and collaborative networks. Building value through connection.',
-      features: ['Partnership Strategy', 'Vendor Management', 'Alliance Formation', 'Network Optimization'],
-      color: 'from-teal-600 to-emerald-600',
-      bgAccent: 'bg-teal-50',
-      image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80'
-    },
-    {
-      icon: <Coins className="w-10 h-10" />,
-      title: 'Sustainability & ESG',
-      tagline: 'Profit Meets Purpose',
-      description: 'Environmental strategy, social impact programs, and governance frameworks. Creating sustainable value for all stakeholders.',
-      features: ['ESG Strategy', 'Carbon Reduction', 'Social Impact', 'Sustainability Reporting'],
-      color: 'from-green-600 to-lime-600',
-      bgAccent: 'bg-green-50',
-      image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&q=80'
+      icon: <Smartphone className="w-12 h-12" />,
+      name: 'Technology & Telecom',
+      description: '5G infrastructure, cloud platforms, SaaS products, and digital transformation consulting.',
+      stats: { clients: '160+', value: '$25B+' },
+      image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80',
+      color: 'from-indigo-500 to-purple-500'
     }
   ];
 
   return (
-    <section className="py-32 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-30" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-100 rounded-full blur-3xl opacity-30" />
-      
-      <div className="max-w-7xl mx-auto px-4 md:px-8 relative">
+    <section className="py-32 bg-black text-white relative overflow-hidden">
+      {/* Animated Background Grid */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `
+            linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)
+          `,
+          backgroundSize: '50px 50px'
+        }} />
+      </div>
+
+      {/* Glowing orbs */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse-slow" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse-slow-delayed" />
+
+      <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-20">
           <div className="inline-block mb-4">
-            <span className="text-sm font-bold tracking-[0.3em] text-gray-500 uppercase">
-              What We Do
+            <span className="text-sm font-bold tracking-[0.3em] text-gray-400 uppercase">
+              Industry Expertise
             </span>
           </div>
-          <h2 className="text-5xl md:text-7xl font-black text-gray-900 mb-6">
-            Enterprise <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Solutions</span>
+          <h2 className="text-5xl md:text-7xl font-black mb-6">
+            Sector <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Mastery</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto font-light">
-            Comprehensive services spanning strategy, technology, operations, and beyond. 
-            Everything a modern enterprise needs to compete and win.
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto font-light">
+            Deep vertical knowledge built over decades. We don't just understand your industry—we help define it.
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
+        {/* Industries Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {industries.map((industry, index) => (
             <div
               key={index}
-              onMouseEnter={() => setActiveService(index)}
-              onMouseLeave={() => setActiveService(null)}
-              className="group relative bg-white border-2 border-gray-100 hover:border-transparent hover:shadow-2xl transition-all duration-500 overflow-hidden"
+              onMouseEnter={() => setHoveredIndustry(index)}
+              onMouseLeave={() => setHoveredIndustry(null)}
+              className="group relative aspect-square overflow-hidden cursor-pointer"
             >
-              {/* Background Image on Hover */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
-                <img src={service.image} alt="" className="w-full h-full object-cover" />
+              {/* Background Image */}
+              <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-110">
+                <img 
+                  src={industry.image} 
+                  alt={industry.name}
+                  className="w-full h-full object-cover"
+                />
               </div>
+
+              {/* Gradient Overlay */}
+              <div className={`absolute inset-0 bg-gradient-to-t ${industry.color} opacity-80 group-hover:opacity-90 transition-opacity`} />
 
               {/* Content */}
-              <div className="relative p-8">
-                {/* Icon */}
-                <div className={`w-16 h-16 bg-gradient-to-br ${service.color} rounded-lg flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                  {service.icon}
+              <div className="absolute inset-0 p-6 flex flex-col justify-between">
+                {/* Icon & Name */}
+                <div>
+                  <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    {industry.icon}
+                  </div>
+                  <h3 className="text-2xl font-bold leading-tight">
+                    {industry.name}
+                  </h3>
                 </div>
 
-                {/* Title & Tagline */}
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                  {service.title}
-                </h3>
-                <p className={`text-sm font-semibold bg-gradient-to-r ${service.color} bg-clip-text text-transparent mb-4`}>
-                  {service.tagline}
-                </p>
-
-                {/* Description */}
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  {service.description}
-                </p>
-
-                {/* Features */}
-                <div className="space-y-2 mb-6">
-                  {service.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-sm text-gray-700">
-                      <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${service.color}`} />
-                      {feature}
+                {/* Hover Content */}
+                <div className={`transition-all duration-500 ${
+                  hoveredIndustry === index 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-4'
+                }`}>
+                  <p className="text-sm mb-4 leading-relaxed">
+                    {industry.description}
+                  </p>
+                  <div className="flex gap-6 text-xs">
+                    <div>
+                      <div className="font-bold text-lg">{industry.stats.clients}</div>
+                      <div className="text-white/80">Clients</div>
                     </div>
-                  ))}
+                    <div>
+                      <div className="font-bold text-lg">{industry.stats.value}</div>
+                      <div className="text-white/80">Impact</div>
+                    </div>
+                  </div>
                 </div>
 
-                {/* CTA */}
-                <button className={`group/btn relative font-semibold text-sm flex items-center gap-2 text-gray-900 hover:gap-3 transition-all`}>
-                  Learn More
-                  <svg className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {/* Arrow */}
+                <div className={`absolute bottom-6 right-6 transition-all duration-500 ${
+                  hoveredIndustry === index 
+                    ? 'opacity-100 translate-x-0' 
+                    : 'opacity-0 translate-x-2'
+                }`}>
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
-                </button>
+                </div>
               </div>
 
-              {/* Accent Line */}
-              <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${service.color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`} />
+              {/* Border Glow */}
+              <div className={`absolute inset-0 border-2 border-white/0 group-hover:border-white/30 transition-colors pointer-events-none`} />
             </div>
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="mt-20 text-center">
-          <p className="text-gray-600 mb-6">
-            Need something specific? We customize solutions for unique challenges.
-          </p>
-          <button className="px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold hover:shadow-2xl hover:scale-105 transition-all">
-            Discuss Your Needs
-          </button>
+        {/* Bottom Stats */}
+        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-t border-white/10">
+          <div className="text-center">
+            <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-2">
+              1,200+
+            </div>
+            <div className="text-gray-400">Industry Clients</div>
+          </div>
+          <div className="text-center">
+            <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-2">
+              $120B+
+            </div>
+            <div className="text-gray-400">Total Impact</div>
+          </div>
+          <div className="text-center">
+            <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent mb-2">
+              45+
+            </div>
+            <div className="text-gray-400">Countries</div>
+          </div>
+          <div className="text-center">
+            <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent mb-2">
+              98%
+            </div>
+            <div className="text-gray-400">Client Retention</div>
+          </div>
         </div>
       </div>
     </section>
   );
 };
 
-export default ServicesSection;
+export default IndustriesSection;
