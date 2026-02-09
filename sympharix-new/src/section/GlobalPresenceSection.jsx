@@ -835,12 +835,9 @@ const GlobalPresenceSection = () => {
   ];
 
   const milestones = [
-    { year: '1995', eventKey: 'founded' },
-    { year: '2000', eventKey: 'expandedEurope' },
-    { year: '2010', eventKey: 'reached50' },
-    { year: '2015', eventKey: 'launchedLabs' },
-    { year: '2020', eventKey: 'digitalTransform' },
-    { year: '2025', eventKey: 'globalLeader' }
+  
+    { year: '2025', eventKey: 'Developing Foundation' },
+     { year: '2026', eventKey: 'Building an Enterprise' }
   ];
 
   const awards = [
