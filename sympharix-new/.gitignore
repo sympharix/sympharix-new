@@ -12,6 +12,13 @@ dist
 dist-ssr
 *.local
 
+# Build artefacts / archives — don't commit binary tarballs
+*.tar
+*.tar.gz
+*.tar.xz
+*.tgz
+*.zip
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
